@@ -1,194 +1,289 @@
-#include <stdio.h>
-#include <string.h>
-#include<stdbool.h>
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<time.h>
 
-int main() {
-    int n, y, score = 0;
-    char name[25];
-    bool ready = true;
-    int r;
-    
-    while (ready)
-    {
-    printf(".......... QUIZ GAME LOADING ..........\n");
-    printf(" >Press 1 to start the game and 0 to EXIT the game: ");
-    scanf("%d", &n);
+int main (){
 
-    if (n == 1) {
-        printf(" >You are starting the game now:\n");
-        printf(" >.......... LOADING ..........\n");
+    int room_number;
+    char name[50];
+    int hotel_class, week_OR_Days, food_option, food;
+    int lodge_Days, pay_Check, code_Confirm;
+    double lodge_Fee;
 
-        printf(" >ENTER YOUR NAME: ");
-        while ((getchar()) != '\n');  // Clear input buffer
-        fgets(name, 25, stdin);
-        name[strcspn(name, "\n")] = '\0';  // Remove newline
+    printf("\033[1;100m...............................................  L.......L............................................\033[0m\n");
+    printf("\033[1;101m...............................................  L.......L............................................\033[0m\n");
+    printf("\033[1;100m...............................................  L.......L............................................\033[0m\n");
+    printf("\033[1;101m...............................................  L.......L............................................\033[0m\n");
+    printf("\033[1;100m...............................................  L.......L............................................\033[0m\n");
 
-        printf(" >>Hello %s, welcome to the GENERAL KNOWLEDGE quiz!\n", name);
-        printf(">%s, you are required to get at least 70 points to qualify for the next stage:\n", name);
-        printf(" >>YOUR TEST STARTS NOW:\n\n");
+    printf("................................................WELCOME TO CRYSTAL HOTEL............................................\n");
 
-        int answer;
+    printf(">>> KINDLY ENTER YOUR NAME PLEASE:\n");
+    fgets(name, sizeof(name), stdin);
+    name[strlen(name) - 1] = '\0';
 
-        // Question 1
-        printf("1. What planet is known as the Red Planet?\n");
-        printf("1) Venus\n2) Mars\n3) Jupiter\n> Your answer: ");
-        scanf("%d", &answer);
-        if (answer == 2) { score += 10; printf(">>> CORRECT! +10 POINTS\n\n"); }
-        else { printf(">>> WRONG! The correct answer is Mars.\n\n"); }
+    printf("%s, YOU ARE WELCOME TO CRYSTAL HOTEL\n", name);
 
-        // Question 2
-        printf("2. Who invented the light bulb?\n");
-        printf("1) Albert Einstein\n2) Thomas Edison\n3) Isaac Newton\n> Your answer: ");
-        scanf("%d", &answer);
-        if (answer == 2)
-        {
-            score += 10; printf(">>> CORRECT! +10 POINTS\n\n");
+    printf(">>> WHICH CLASS OF HOTEL ARE YOU SIGNING IN?\n");
+    printf(" 1. Executive Class   - ₦80,000\n");
+    printf(" 2. Local Class       - ₦60,000\n");
+    printf(" 3. Normal Class      - ₦30,000\n");
+    printf("Enter your choice (1-3): ");
+
+    scanf("%d", &hotel_class);
+    printf("HOTEL CLASS: %d\n", hotel_class);
+
+    if(hotel_class==1){
+
+        printf("%s, welcome to the EXECUTIVE class\n", name);
+        printf("YOU ARE REQUIRED TO PAY N 80,000 FOR A DAY\n");
+
+        printf(">>WILL YOU LIKE TO SPEND WEEKS OR DAYS?\n");
+        printf("1. for weeks\n");
+        printf("0. for days\n");
+        printf("ENTER(1-0): ");
+        scanf("%d", &week_OR_Days);
+
+        if(week_OR_Days == 0){
+
+            printf(">> HOW MANY DAYS WILL YOU LIKE TO LODGE?\n");
+            printf("> NUMBER OF DAYS:\n>1\n>2\n>3\n>4\n>5\n>6: more\n");
+            scanf("%d", &lodge_Days);
+
+            if(lodge_Days==1){
+                lodge_Fee = 1 * 80000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==2){
+                lodge_Fee = 2 * 80000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==3){
+                lodge_Fee = 3 * 80000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==4){
+                lodge_Fee = 4 * 80000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==5){
+                lodge_Fee = 5 * 80000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==6){
+                printf("ENTER NUMBER OF DAYS TO USE: ");
+                scanf("%d", &lodge_Days);
+                lodge_Fee = lodge_Days * 80000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
         }
 
-        else
-        {
-            printf(">>> WRONG! The correct answer is Thomas Edison.\n\n");
+        printf("\n> HAVE YOU MADE YOUR PAYMENT?\n PRESS 1 IF YES, 0 IF NO: ");
+        scanf("%d", &pay_Check);
+
+        if(pay_Check == 1){
+
+            printf("> ENTER 6 DIGITS CONFIRMATION CODE: "); // I AM TRYING TO GENERATE A RANDOMNUMBER, BUT DON'T EVEN KNOW HOW TO GO ABOUT IT FOR NOW
+            scanf("%d", &code_Confirm);
+
+            if(code_Confirm == 123456){
+
+                printf("YOU CAN BEGIN THE PROCESS NOW\n");
+
+                printf("WHICH DO YOU WANT FOOD OR SNACKS\n CLICK 1 FOR FOOD AND 0 FOR SNACK: ");
+                scanf("%d", &food_option);
+
+                if (food_option==1){
+
+                    printf("\nFOOD MENU\n");
+                    printf("1. BEANS AND RICE\n");
+                    printf("2. JOLLOF RICE\n");
+                    printf("3. FRIED RICE\n");
+                    printf("4. AMALA WITH EGUSI SOUP\n");
+                    printf("5. MOINMOIN\n");
+
+                    printf("ENTER NUMBER CHOICE OF FOOD: ");
+                    scanf("%d", &food);
+
+                    if(food==1){
+                        printf("YOU REQUESTED FOR RICE WITH BEEF, YOUR ORDER IS ON THE WAY\n");
+                    }
+                }
+
+                else if(food_option==0){
+
+                    printf("\nSNACK MENU\n");
+                    printf("1. MEATPIE\n");
+                    printf("2. FRUIT SALAD\n");
+                    printf("3. FRUIT JUICE\n");
+                    printf("4. EGG ROLL\n");
+                    printf("5. PUFF PUFF\n");
+                    printf("6. BISCUIT\n");
+                    printf("7. YAM CHIPS\n");
+                    printf("8. POTATO CHIPS\n");
+                }
+            }
+
+            else{
+                printf("ERROR CODE!!! YOU HAVE TO MAKE YOUR PAYMENT\n");
+            }
         }
 
-        // Question 3
-        printf("3. What is the capital of France?\n");
-        printf("1) Rome\n2) Berlin\n3) Paris\n> Your answer: ");
-        scanf("%d", &answer);
-        if (answer == 3)
-        {
-            score += 10;
-            printf(">>> CORRECT! +10 POINTS\n\n");
+        else{
+            printf("YOU HAVE TO MAKE YOUR PAYMENT\nNOT PROCESSING...\n");
         }
-        else
-        {
-            printf(">>> WRONG! The correct answer is Paris.\n\n");
-        }
-
-        // Question 4
-        printf("4. How many continents are there on Earth?\n");
-        printf("1) 5\n2) 7\n3) 6\n> Your answer: ");
-        scanf("%d", &answer);
-        if (answer == 2)
-        {
-            score += 10;
-            printf(">>> CORRECT! +10 POINTS\n\n");
-        }
-        else
-        {
-            printf(">>> WRONG! The correct answer is 7.\n\n");
-        }
-
-        // Question 5
-        printf("5. What gas do humans need to breathe to survive?\n");
-        printf("1) Oxygen\n2) Hydrogen\n3) Carbon Dioxide\n> Your answer: ");
-        scanf("%d", &answer);
-        if (answer == 1)
-        {
-            score += 10;
-            printf(">>> CORRECT! +10 POINTS\n\n");
-        }
-        else
-        {
-            printf(">>> WRONG! The correct answer is Oxygen.\n\n");
-        }
-
-        // Question 6
-        printf("6. Which is the largest ocean in the world?\n");
-        printf("1) Atlantic\n2) Pacific\n3) Indian\n> Your answer: ");
-        scanf("%d", &answer);
-        if (answer == 2)
-        {
-            score += 10; printf(">>> CORRECT! +10 POINTS\n\n");
-        }
-        else
-        {
-            printf(">>> WRONG! The correct answer is Pacific.\n\n");
-        }
-
-        // Question 7
-        printf("7. Who wrote 'Romeo and Juliet'?\n");
-        printf("1) William Shakespeare\n2) Charles Dickens\n3) Jane Austen\n> Your answer: ");
-        scanf("%d", &answer);
-        if (answer == 1)
-        {
-            score += 10;
-            printf(">>> CORRECT! +10 POINTS\n\n");
-        }
-        else
-        {
-            printf(">>> WRONG! The correct answer is William Shakespeare.\n\n");
-        }
-
-        // Question 8
-        printf("8. What is the boiling point of water in Celsius?\n");
-        printf("1) 90°C\n2) 100°C\n3) 110°C\n> Your answer: ");
-        scanf("%d", &answer);
-
-        if (answer == 2)
-        {
-            score += 10;
-            printf(">>> CORRECT! +10 POINTS\n\n");
-        }
-        else
-        {
-            printf(">>> WRONG! The correct answer is 100°C.\n\n");
-        }
-
-        // Question 9
-        printf("9. What is the largest animal on Earth?\n");
-        printf("1) African Elephant\n2) Blue Whale\n3) Giraffe\n> Your answer: ");
-        scanf("%d", &answer);
-        if (answer == 2)
-            {
-            score += 10;
-            printf(">>> CORRECT! +10 POINTS\n\n");
-        }
-        else
-        {
-            printf(">>> WRONG! The correct answer is Blue Whale.\n\n");
-        }
-
-        // Question 10
-        printf("10. Which country is known as the Giant of Africa?\n");
-        printf("1) Nigeria\n2) Egypt\n3) South Africa\n> Your answer: ");
-        scanf("%d", &answer);
-        if (answer == 1)
-        {
-            score += 10;
-            printf(">>> CORRECT! +10 POINTS\n\n");
-        }
-        else
-        {
-            printf(">>> WRONG! The correct answer is Nigeria.\n\n");
-        }
-
-        // Final Score
-        printf(">>> YOUR TOTAL SCORE IS: %d out of 100\n", score);
-        if (score >= 70) {
-            printf(">>> CONGRATULATIONS %s, YOU QUALIFIED FOR THE NEXT STAGE!\n", name);
-        } else {
-            printf(">>> SORRY %s, YOU DID NOT QUALIFY. Try again!\n", name);
-        }
-
-    } else if (n == 0) {
-        printf(">DO YOU WANT TO EXIT (YES/NO)?\n");
-        printf(">Press 1 for YES and 0 for NO: ");
-        scanf("%d", &y);
-        if (y == 1) {
-            printf(">>> EXITING... BYE!\n");
-        } else {
-            printf(">Returning to main menu... (You can restart the program)\n");
-        }
-    } else {
-        printf(">>> ENTER VALID INPUT !!! >>>\n");
-    } 
-
     }
 
-    printf("Enter 1 to continue and 0 to end: ");
-    scanf("%d", &r);
-    if(r==0) ready = false;
- 
+    else if(hotel_class==2){
+
+        printf("%s, welcome to the LOCAL class\n", name);
+        printf("YOU ARE REQUIRED TO PAY N 60,000 FOR A DAY\n");
+
+        printf(">>WILL YOU LIKE TO SPEND WEEKS OR DAYS?\n");
+        printf("1. for weeks\n");
+        printf("0. for days\n");
+        scanf("%d", &week_OR_Days);
+
+        if(week_OR_Days==0){
+
+            printf(">> HOW MANY DAYS WILL YOU LIKE TO LODGE?\n");
+            scanf("%d", &lodge_Days);
+
+            if(lodge_Days==1){
+                lodge_Fee = 1 * 60000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==2){
+                lodge_Fee = 2 * 60000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==3){
+                lodge_Fee = 3 * 60000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==4){
+                lodge_Fee = 4 * 60000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==5){
+                lodge_Fee = 5 * 60000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==6){
+                printf("ENTER NUMBER OF DAYS TO USE: ");
+                scanf("%d", &lodge_Days);
+                lodge_Fee = lodge_Days * 60000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+        }
+
+        printf("> HAVE YOU MADE YOUR PAYMENT ?\n PRESS 1 IF YES, 0 IF NO: ");
+        scanf("%d", &pay_Check);
+
+        if(pay_Check==1){
+
+            printf("> ENTER 6 DIGITS CONFIRMATION CODE: ");
+            scanf("%d", &code_Confirm);
+
+            if(code_Confirm==123456){
+                printf("YOU CAN BEGIN THE PROCESS NOW\n");
+            }
+
+            else{
+                printf("YOU HAVE TO MAKE YOUR PAYMENT\n");
+            }
+        }
+
+        else{
+            printf("YOU HAVE TO MAKE YOUR PAYMENT\nNOT PROCESSING...\n");
+        }
+    }
+
+    else if(hotel_class==3){
+
+        printf("%s, welcome to the NORMAL class\n", name);
+        printf("YOU ARE REQUIRED TO PAY N 30,000 FOR A DAY\n");
+
+        printf(">>WILL YOU LIKE TO SPEND WEEKS OR DAYS?\n");
+        printf("1. for weeks\n");
+        printf("0. for days\n");
+        scanf("%d", &week_OR_Days);
+
+        if(week_OR_Days==0){
+
+            printf(">> HOW MANY DAYS WILL YOU LIKE TO LODGE?\n");
+            scanf("%d", &lodge_Days);
+
+            if(lodge_Days==1){
+                lodge_Fee = 1 * 30000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==2){
+                lodge_Fee = 2 * 30000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==3){
+                lodge_Fee = 3 * 30000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==4){
+                lodge_Fee = 4 * 30000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==5){
+                lodge_Fee = 5 * 30000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+
+            if(lodge_Days==6){
+                printf("ENTER NUMBER OF DAYS TO USE: ");
+                scanf("%d", &lodge_Days);
+                lodge_Fee = lodge_Days * 30000;
+                printf("\nTOTAL COST: N%.2lf", lodge_Fee);
+            }
+        }
+
+        printf("> HAVE YOU MADE YOUR PAYMENT ?\n PRESS 1 IF YES, 0 IF NO: ");
+        scanf("%d", &pay_Check);
+
+        if(pay_Check==1){
+
+            printf("> ENTER 6 DIGITS CONFIRMATION CODE: ");
+            scanf("%d", &code_Confirm);
+
+            if(code_Confirm==123456){
+                printf("YOU CAN BEGIN THE PROCESS NOW\n");
+            }
+
+            else{
+                printf("YOU HAVE TO MAKE YOUR PAYMENT\n");
+            }
+        }
+
+        else{
+            printf("YOU HAVE TO MAKE YOUR PAYMENT\nNOT PROCESSING...\n");
+        }
+    }
+
+    else{
+        printf("ENTER RIGHT INPUT!!!\n");
+    }
 
     return 0;
 }
+
