@@ -102,6 +102,6 @@ Despite being incomplete, this project taught me:
 - The value of breaking problems into functions
 - When to stop and refactor vs. pushing forward
 
-## Author
+## Toluwanimi Alfred Fadipe
 
 Built while learning C programming. This represents an early attempt at a complex application and shows honest learning progression, including mistakes and unfinished features.
